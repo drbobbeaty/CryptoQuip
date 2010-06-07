@@ -119,6 +119,24 @@
 - (NSString*) description;
 
 //----------------------------------------------------------------------------
+//					Comparison Methods (for Sorting)
+//----------------------------------------------------------------------------
+
+/*!
+ This comparison method will compare the lengths of the cypherwords so that
+ you can use this method to sort the puzzle pieces on the lengths of the words
+ for some attack.
+ */
+- (NSComparisonResult) compareLength:(PuzzlePiece*)anOther;
+
+/*!
+ This comparison method will compare the number of possible plaintext matches
+ for the argument and this instance to see who has more. This is useful in
+ sorting the puzzle pieces on the number of possible matches in the attack.
+ */
+- (NSComparisonResult) comparePossibles:(PuzzlePiece*)anOther;
+
+//----------------------------------------------------------------------------
 //					NSCopying Methods
 //----------------------------------------------------------------------------
 

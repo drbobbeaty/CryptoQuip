@@ -116,7 +116,9 @@
 		for (NSString* cw in [text componentsSeparatedByString:@" "]) {
 			if ([cw length] > 0) {
 				if ((pp = [PuzzlePiece createPuzzlePiece:cw]) != nil) {
-					[self addToPuzzlePieces:pp];
+					if (![[self getPuzzlePieces] containsObject:pp]) {
+						[self addToPuzzlePieces:pp];
+					}
 				}
 			}
 		}
@@ -259,6 +261,9 @@
  */
 - (BOOL) attemptWordBlockAttack
 {
+	// sort the puzzle pieces by the number of possible words they match
+	[[self getPuzzlePieces] sortUsingSelector:@selector(comparePossibles:)];
+	// ...now run through the standard block attack
 	return [self doWordBlockAttackOnIndex:0 withLegend:[self getStartingLegend]];
 }
 

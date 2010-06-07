@@ -181,7 +181,49 @@
  */
 - (NSString*) description
 {
-	return [NSString stringWithFormat:@"[cypherWord:@%, possibles:@%]", [[self getCypherWord] description], [[self getPossibles] description]];
+	return [NSString stringWithFormat:@"[cypherWord:%@, possibles:%@]", [[self getCypherWord] description], [[self getPossibles] description]];
+}
+
+
+//----------------------------------------------------------------------------
+//					Comparison Methods (for Sorting)
+//----------------------------------------------------------------------------
+
+/*!
+ This comparison method will compare the lengths of the cypherwords so that
+ you can use this method to sort the puzzle pieces on the lengths of the words
+ for some attack.
+ */
+- (NSComparisonResult) compareLength:(PuzzlePiece*)anOther
+{
+	NSUInteger	me = [[self getCypherWord] length];
+	NSUInteger	him = [[anOther getCypherWord] length];
+	if (me < him) {
+		return NSOrderedAscending;
+	} else if (me > him) {
+		return NSOrderedDescending;
+	} else {
+		return NSOrderedSame;
+	}
+}
+
+
+/*!
+ This comparison method will compare the number of possible plaintext matches
+ for the argument and this instance to see who has more. This is useful in
+ sorting the puzzle pieces on the number of possible matches in the attack.
+ */
+- (NSComparisonResult) comparePossibles:(PuzzlePiece*)anOther
+{
+	NSUInteger	me = [self countOfPossibles];
+	NSUInteger	him = [anOther countOfPossibles];
+	if (me < him) {
+		return NSOrderedAscending;
+	} else if (me > him) {
+		return NSOrderedDescending;
+	} else {
+		return NSOrderedSame;
+	}
 }
 
 
