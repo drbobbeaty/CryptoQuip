@@ -230,7 +230,6 @@
 - (void) awakeFromNib
 {
 	// clear out the input and output text areas as we want them clean
-//	[[self getCyphertextLine] setStringValue:@""];
 	[[self getPlaintextLine] setStringValue:@""];
 	// ...and de-select the character mappings
 	[[self getCypherChar] deselectItemAtIndex:[[self getCypherChar] indexOfSelectedItem]];
@@ -308,7 +307,7 @@
 			NSString*	wordsFile = [[NSString stringWithFormat:@"%@/words", resDir] retain];
 			NSString*	contents = [[NSString stringWithContentsOfFile:wordsFile encoding:NSUTF8StringEncoding error:NULL] retain];
 			[a addObjectsFromArray:[contents componentsSeparatedByString:@"\n"]];
-			NSLog(@"Loaded %d words from %@", [a count], wordsFile);
+			NSLog(@"Loaded %lu words from %@", [a count], wordsFile);
 			// we don't need the intermediate values any longer...
 			[contents release];
 			[wordsFile release];
