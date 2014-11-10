@@ -49,7 +49,7 @@
 + (PuzzlePiece*) createPuzzlePiece:(NSString*)cypher
 {
 	// create what we said we would - this is just a convenience method
-	return [[[PuzzlePiece alloc] initWithCypherText:cypher] autorelease];
+	return [[PuzzlePiece alloc] initWithCypherText:cypher];
 }
 
 
@@ -91,7 +91,7 @@
 {
 	if (self = [self init]) {
 		if (text != nil) {
-			CypherWord*		cw = [[[CypherWord alloc] initWithCypherText:text] autorelease];
+			CypherWord*		cw = [[CypherWord alloc] initWithCypherText:text];
 			if (cw == nil) {
 				NSLog(@"[PuzzlePIece -init] - the CypherWord for '%@' could not be created. This is a serious allocation error and needs to be looked into as soon as possible.", text);
 			} else {
@@ -114,7 +114,7 @@
 - (id) init
 {
 	if (self = [super init]) {
-		NSMutableArray*		a = [[[NSMutableArray alloc] init] autorelease];
+		NSMutableArray*		a = [[NSMutableArray alloc] init];
 		if (a == nil) {
 			NSLog(@"[PuzzlePIece -init] - the storage for all the plaintext words that match the cyphertext could not be created. This is a serious allocation error and needs to be looked into as soon as possible.");
 		} else {
@@ -136,8 +136,6 @@
 	[self removeAllPossibles];
 	// ...and the array that held it
 	[self setPossibles:nil];
-	// ...and don't forget to call the super's dealloc too...
-	[super dealloc];
 }
 
 
@@ -243,7 +241,7 @@
 	id	dup = [[PuzzlePiece allocWithZone:zone] initWithCypherText:[[self getCypherWord] getCypherText]];
 	// now let's add in all the possibles to the duplicate that we have now
 	for (NSString* poss in [self getPossibles]) {
-		[[dup getPossibles] addObject:[[poss copyWithZone:zone] autorelease]];
+		[[dup getPossibles] addObject:[poss copyWithZone:zone]];
 	}
 	return dup;
 }

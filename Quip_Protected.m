@@ -50,10 +50,7 @@
  */
 - (void) setCypherText:(NSString*)text
 {
-	if (_cyphertext != text) {
-		[_cyphertext release];
-		_cyphertext = [text retain];
-	}
+	_cyphertext = text;
 }
 
 
@@ -64,10 +61,7 @@
  */
 - (void) setStartingLegend:(Legend*)legend
 {
-	if (_startingLegend != legend) {
-		[_startingLegend release];
-		_startingLegend = [legend retain];
-	}
+	_startingLegend = legend;
 }
 
 
@@ -77,10 +71,7 @@
  */
 - (void) setPuzzlePieces:(NSMutableArray*)list
 {
-	if (_puzzlePieces != list) {
-		[_puzzlePieces release];
-		_puzzlePieces = [list retain];
-	}
+	_puzzlePieces = list;
 }
 
 /*!
@@ -169,10 +160,7 @@
  */
 - (void) setSolutions:(NSMutableArray*)list
 {
-	if (_solutions != list) {
-		[_solutions release];
-		_solutions = [list retain];
-	}
+	_solutions = list;
 }
 
 
@@ -276,9 +264,6 @@
 {
 	BOOL	haveSolutions = NO;
 
-	// retain the legend we've been given for the time we need it
-	[key retain];
-	
 	// check all the possibles for this guy to see if they can possibly match
 	PuzzlePiece*	piece = [[self getPuzzlePieces] objectAtIndex:index];
 	CypherWord*		cw = [piece getCypherWord];
@@ -307,8 +292,6 @@
 				if ([nextKey incorporateMappingCypher:cw toPlain:pw]) {
 					haveSolutions = [self doWordBlockAttackOnIndex:(index + 1) withLegend:nextKey];
 				}
-				// now we can release this new key as we're done with it
-				[nextKey release];
 			}
 		}
 
@@ -318,8 +301,6 @@
 		}
 	}
 	
-	// we no longer need the legend, so release it
-	[key release];
 	return haveSolutions;
 }
 

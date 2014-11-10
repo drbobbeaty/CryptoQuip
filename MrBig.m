@@ -126,10 +126,7 @@
  */
 - (void) setWordList:(NSMutableArray*)list
 {
-	if (_wordList != list) {
-		[_wordList release];
-		_wordList = [list retain];
-	}
+	_wordList = list;
 }
 
 
@@ -157,27 +154,22 @@
 - (IBAction) decode:(id)sender
 {
 	// get the values from the UI elements
-	NSString*	cyphertext = [[[self getCyphertextLine] stringValue] retain];
+	NSString*	cyphertext = [[self getCyphertextLine] stringValue];
 	// ...get the character that's the cypher part of the legend
 	unichar		cypher = '\0';
-	NSString*	cypherCombo = [[[self getCypherChar] stringValue] retain];
+	NSString*	cypherCombo = [[self getCypherChar] stringValue];
 	if ((cypherCombo != nil) && ([cypherCombo length] > 0)) {
 		cypher = tolower([cypherCombo characterAtIndex:0]);
 	}
 	// ...get the character that's the plain part of the legend
 	unichar		plain = '\0';
-	NSString*	plainCombo = [[[self getPlainChar] stringValue] retain];
+	NSString*	plainCombo = [[self getPlainChar] stringValue];
 	if ((plainCombo != nil) && ([plainCombo length] > 0)) {
 		plain = tolower([plainCombo characterAtIndex:0]);
 	}
 	
 	// now let's call the solver
 	[self solve:cyphertext where:cypher equals:plain];
-	
-	// now release all that we've held onto
-	[cyphertext release];
-	[cypherCombo release];
-	[plainCombo release];
 }
 
 
@@ -212,8 +204,6 @@
 		NSLog(@"Solution found: '%@'", [[q getSolutions] objectAtIndex:0]);
 		[[self getPlaintextLine] setStringValue:[[q getSolutions] objectAtIndex:0]];
 	}
-	// now we can release the Quip as we're done
-	[q release];
 }
 
 
@@ -298,20 +288,16 @@
 - (id) init
 {
 	if (self = [super init]) {
-		NSMutableArray*		a = [[[NSMutableArray alloc] init] autorelease];
+		NSMutableArray*		a = [[NSMutableArray alloc] init];
 		if (a == nil) {
 			NSLog(@"[MrBig -init] - the storage for all the plaintext words could not be created. This is a serious allocation error and needs to be looked into as soon as possible.");
 		} else {
 			// get the location of the 'words' file
-			NSString*	resDir = [[[NSBundle mainBundle] resourcePath] retain];
-			NSString*	wordsFile = [[NSString stringWithFormat:@"%@/words", resDir] retain];
-			NSString*	contents = [[NSString stringWithContentsOfFile:wordsFile encoding:NSUTF8StringEncoding error:NULL] retain];
+			NSString*	resDir = [[NSBundle mainBundle] resourcePath];
+			NSString*	wordsFile = [NSString stringWithFormat:@"%@/words", resDir];
+			NSString*	contents = [NSString stringWithContentsOfFile:wordsFile encoding:NSUTF8StringEncoding error:NULL];
 			[a addObjectsFromArray:[contents componentsSeparatedByString:@"\n"]];
 			NSLog(@"Loaded %lu words from %@", [a count], wordsFile);
-			// we don't need the intermediate values any longer...
-			[contents release];
-			[wordsFile release];
-			[resDir release];
 			// now save what we have
 			[self setWordList:a];
 		}
@@ -331,8 +317,6 @@
 	[[self getWordList] removeAllObjects];
 	// ...and the array that held it
 	[self setWordList:nil];
-	// ...and don't forget to call the super's dealloc too...
-	[super dealloc];	
 }
 
 @end

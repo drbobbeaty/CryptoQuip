@@ -51,7 +51,7 @@
 + (Legend*) createLegendWhere:(unichar)cypher equals:(unichar)plain
 {
 	// make a blank Legend and then populate it with the one, known mapping
-	return [[[Legend alloc] initWithCypherChar:cypher toPlainChar:plain] autorelease];
+	return [[Legend alloc] initWithCypherChar:cypher toPlainChar:plain];
 }
 
 
@@ -331,7 +331,7 @@
 		}
 	}
 	[desc appendString:@"]"];
-	return [desc autorelease];
+	return desc;
 }
 
 

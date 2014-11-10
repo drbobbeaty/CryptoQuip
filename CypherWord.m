@@ -50,7 +50,7 @@
 + (CypherWord*) createCypherWord:(NSString*)cypher
 {
 	// make a blank CypherWord and then populate it with the given text
-	return [[[CypherWord alloc] initWithCypherText:cypher] autorelease];
+	return [[CypherWord alloc] initWithCypherText:cypher];
 }
 
 
@@ -284,7 +284,7 @@
  */
 - (NSString*) description
 {
-	return [[[self getCypherText] copy] autorelease];
+	return [[self getCypherText] copy];
 }
 
 

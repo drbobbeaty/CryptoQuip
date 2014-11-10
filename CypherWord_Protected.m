@@ -49,10 +49,7 @@
  */
 - (void) setCypherText:(NSString*)text
 {
-	if (_cyphertext != text) {
-		[_cyphertext release];
-		_cyphertext = [text retain];
-	}
+	_cyphertext = text;
 }
 
 @end

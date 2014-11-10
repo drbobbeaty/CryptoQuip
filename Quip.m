@@ -147,7 +147,7 @@
 {
 	if (self = [super init]) {
 		// make the array to hold all the puzzle pieces
-		NSMutableArray*		a = [[[NSMutableArray alloc] init] autorelease];
+		NSMutableArray*		a = [[NSMutableArray alloc] init];
 		if (a == nil) {
 			NSLog(@"[PuzzlePIece -init] - the storage for all the plaintext words that match the cyphertext could not be created. This is a serious allocation error and needs to be looked into as soon as possible.");
 		} else {
@@ -155,7 +155,7 @@
 		}
 		
 		// make an array to hold all the solutions
-		a = [[[NSMutableArray alloc] init] autorelease];
+		a = [[NSMutableArray alloc] init];
 		if (a == nil) {
 			NSLog(@"[PuzzlePIece -init] - the storage for all the plaintext solutions to the puzzle could not be created. This is a serious allocation error and needs to be looked into as soon as possible.");
 		} else {
@@ -177,8 +177,6 @@
 	[self removeAllPuzzlePieces];
 	// ...and the array that held it
 	[self setPuzzlePieces:nil];
-	// ...and don't forget to call the super's dealloc too...
-	[super dealloc];	
 }
 
 
@@ -233,10 +231,10 @@
 	// simply use the allocWithZone and populate it properly - easy
 	id	dup = [[Quip allocWithZone:zone] init];
 	// now let's add in copies of all the ivars we have to make it equal
-	[dup setCypherText:[[[self getCypherText] copyWithZone:zone] autorelease]];
-	[dup setStartingLegend:[[[self getStartingLegend] copyWithZone:zone] autorelease]];
+	[dup setCypherText:[[self getCypherText] copyWithZone:zone]];
+	[dup setStartingLegend:[[self getStartingLegend] copyWithZone:zone]];
 	for (PuzzlePiece* pp in [self getPuzzlePieces]) {
-		[[dup getPuzzlePieces] addObject:[[pp copyWithZone:zone] autorelease]];
+		[[dup getPuzzlePieces] addObject:[pp copyWithZone:zone]];
 	}
 	return dup;	
 }

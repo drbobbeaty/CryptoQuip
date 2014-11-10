@@ -49,10 +49,7 @@
  */
 - (void) setCypherWord:(CypherWord*)word
 {
-	if (_cyphertext != word) {
-		[_cyphertext release];
-		_cyphertext = [word retain];
-	}
+	_cyphertext = word;
 }
 
 
@@ -64,10 +61,7 @@
  */
 - (void) setPossibles:(NSMutableArray*)array
 {
-	if (_possiblePlaintexts != array) {
-		[_possiblePlaintexts release];
-		_possiblePlaintexts = [array retain];
-	}
+	_possiblePlaintexts = array;
 }
 
 

@@ -8,9 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface CryptoQuipAppDelegate : NSObject <NSApplicationDelegate> {
-    NSWindow *window;
-}
+@interface CryptoQuipAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
 
