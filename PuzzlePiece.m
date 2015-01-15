@@ -271,7 +271,7 @@
 /*!
  This method uses the provided legend to partially, if not fully, decode the
  cypherword into plaintext and then check that against all the possible plain
- text words we know about and returns how many matches there are. THis is a
+ text words we know about and returns how many matches there are. This is a
  good way to see how many, if any, matches there are to the decoding provided
  by the legend. If there's no array to hold the possibles, this method will
  return -1 indicating an error.
