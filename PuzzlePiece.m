@@ -262,7 +262,7 @@
 {
 	int		cnt = -1;
 	if ([self getPossibles] != nil) {
-		cnt = [[self getPossibles] count];
+		cnt = (int) [[self getPossibles] count];
 	}
 	return cnt;
 }
