@@ -46,6 +46,9 @@
  This method allows the caller to create an autoreleased CypherWord that
  is the provided cyphertext. This is useful in building up the puzzle from
  it's definition.
+
+ @param cypher Source cypherword string
+ @return newly created CypherWord
  */
 + (CypherWord*) createCypherWord:(NSString*)cypher
 {
@@ -61,6 +64,9 @@
 /*!
  This method returns the cyphertext that we're usaing as the starting point
  for all the mapping and decoding tests and methods.
+
+ @param
+ @return String representation of the cyphertext
  */
 - (NSString*) getCypherText
 {
@@ -71,6 +77,9 @@
 /*!
  This method returns the length of characters in the cypherword. It's here to
  make this look a lot more like an NSString so it's easy to work with them.
+
+ @param
+ @return Count of characters in the cypherword
  */
 - (NSUInteger) length
 {
@@ -85,6 +94,9 @@
 /*!
  This method initializes this instance with the provided cyphertext so that
  we're ready to start doing all the magic this guy is capable of.
+
+ @param text Source cypherword string
+ @return self
  */
 - (id) initWithCypherText:(NSString*)text
 {
@@ -105,6 +117,10 @@
  decoded text can't possibly match, either. This method will look at the
  pattern of characters in the cyphertext and compare it to the pattern in
  the argument and if they match, will return YES.
+
+ @param plaintext A plaintext word to see if it matches the pattern
+                  of the cypherword
+ @return YES if the pattern of the two words matches
  */
 - (BOOL) matchesPattern:(NSString*)plaintext
 {
@@ -154,6 +170,10 @@
  plaintext string and then see if the resulting word COULD BE the plaintext.
  This is not to say that the word is completely decoded - only that those
  characters that are decoded match the characters in the plaintext.
+
+ @param plaintext A possible plaintext version of the cypherword
+ @param key The decoding legend (key) for the mapping
+ @return YES, if the cypherword maps to the plaintext with the legend
  */
 - (BOOL) canMatch:(NSString*)plaintext with:(Legend*)key
 {
@@ -198,6 +218,10 @@
  results in the plaintext <b>exactly</b>. This means that there are NO characters
  that aren't properly decoded in the cyphertext. If this method returns YES,
  then -canMatch:with: will be YES, but the reverse is not necessarily true.
+
+ @param plaintext A possible plaintext version of the cypherword
+ @param legend The decoding legend (key) for the mapping
+ @return YES, if the cypherword maps to the plaintext with the legend
  */
 - (BOOL) decodesTo:(NSString*)plaintext with:(Legend*)key
 {
@@ -241,6 +265,9 @@
  This method takes the Legend and applies it to the cyphertext and IF it creates
  a completely decoded word, it returns that word. If not, it returns nil. This
  is very similar to -decodesTo:with: but it returns the word it decodes to.
+
+ @param legend The decoding legend (key) for the mapping
+ @return Decoded string for the cypherword
  */
 - (NSString*) createPlaintextWithLegend:(Legend*)key
 {

@@ -47,6 +47,8 @@
  as a 'reference' but it'll be broken up into individual words and those
  will work on the data to attempt a solution. This guy is just holding onto
  the starting point.
+
+ @param text The straight cyphertext for the Quip
  */
 - (void) setCypherText:(NSString*)text;
 
@@ -54,12 +56,17 @@
  This method sets the starting legend for the puzzle. Every quip has to have
  at least one letter mapping so you know where to start. This is how we'll
  be told what that mapping is.
+
+ @param legend The array of characters, whose - by their position in the array
+               form the mapping from cypher text to plain text.
  */
 - (void) setStartingLegend:(Legend*)legend;
 
 /*!
  This method sets the array of puzzle pieces that will be created from the
  initial cyphertext and form the backbone of the puzzle solver.
+
+ @param list The array of PuzzlePiece objects that make up the entire Quip
  */
 - (void) setPuzzlePieces:(NSMutableArray*)list;
 
@@ -67,6 +74,9 @@
  This method adds the provided PuzzlePIece to the end of the list of all
  such pieces for this quip. This is generally called when you are building
  up the list of pieces by decomposing the initial cyphertext.
+
+ @param piece A PuzzlePiece instance to add to the list for this Quip
+ @return YES if the piece was added successfully
  */
 - (BOOL) addToPuzzlePieces:(PuzzlePiece*)piece;
 
@@ -74,6 +84,9 @@
  This method removes the equivalent puzzle piece from the list - if it exists
  in the list. This uses the -isEquals: method so it's not required that they
  be the same instance, just equivalent in that object's sense.
+
+ @param piece A PuzzlePiece instance to remove from the list for this Quip
+ @return YES if the piece was removed successfully
  */
 - (BOOL) removeFromPuzzlePIeces:(PuzzlePiece*)piece;
 
@@ -87,6 +100,8 @@
  This method sets the array of complete solutions that will be created from the
  initial cyphertext and our best attempts to solve the puzzle. It's the set of
  all plaintexts that we could create from the initial cyphertext and the legend.
+
+ @param list Array of plain text solutions to the Quip
  */
 - (void) setSolutions:(NSMutableArray*)list;
 
@@ -94,6 +109,9 @@
  This method adds the provided plaintext to the end of the list of all
  soutions for this quip. This is generally called when you are solving the
  bloody thing. Don't allow doubles - there's no need.
+
+ @param plaintext A plaintext solution to add to the Quip
+ @return YES if the addition was successful
  */
 - (BOOL) addToSolutions:(NSString*)plaintext;
 
@@ -101,6 +119,9 @@
  This method removes the equivalent solution from the list - if it exists
  in the list. This uses the -isEquals: method so it's not required that they
  be the same instance, just equivalent in that object's sense.
+
+ @param plaintext A plaintext solution to remove from the Quip
+ @return YES if the removal was successful
  */
 - (BOOL) removeFromSolutions:(NSString*)plaintext;
 
@@ -124,6 +145,9 @@
  
  If this attack results in a successful decoding of the cyphertext, this method
  will return YES, otherwise, it will return NO.
+
+ @param index The zero-biased index of PuzzlePieces to start the attack on
+ @param legend The Legend (key) to start the attack with
  */
 - (BOOL) doWordBlockAttackOnIndex:(NSUInteger)index withLegend:(Legend*)legend;
 

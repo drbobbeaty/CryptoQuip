@@ -46,6 +46,8 @@
  This method sets the cyphertext for this word, and is TYPICALLY set once
  in the -initWithCypherText: method for this guy. After this, it's a matter
  of trying to decode this guy and his buddies.
+
+ @param text Cyphertext string representation to set
  */
 - (void) setCypherText:(NSString*)text;
 

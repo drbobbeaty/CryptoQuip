@@ -194,6 +194,10 @@
  string as well as the initial part of the legend, and will load up the
  Quip and have it do it's thing, placing the solution in the text field
  when it's done. Pretty simple. I just needed a single method to do this.
+
+ @param cyphertext The source cyphertext to decode
+ @param cypher The cypher character that's part of the hint
+ @param plain The plain character that's part of the hint
  */
 - (void) solve:(NSString*)cyphertext where:(unichar)cypher equals:(unichar)plain
 {

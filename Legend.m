@@ -47,6 +47,10 @@
  contains the one and only cyphertext to plaintext mapping that is
  supplied as arguments to this guy. This is very helpful when you need
  to make a new legend to add onto another Legend for testing a new idea.
+
+ @param cypher The cypher character
+ @param plain The plain character
+ @return The created Legend
  */
 + (Legend*) createLegendWhere:(unichar)cypher equals:(unichar)plain
 {
@@ -65,6 +69,9 @@
  and the value is the plaintext character for that cyphertext character.
  Of course, if the character is '\0', then that means there's no mapping
  for that character in the cyphertext.
+
+ @param
+ @return The character array representing the mapping
  */
 - (unichar*) getMap
 {
@@ -77,6 +84,9 @@
  characters: the cypher character and the plain character. This will
  go into the legend and will be used in all subsequent decodings of
  cypherwords by this legend.
+
+ @param c The cypher character
+ @param p The plain character
  */
 - (void) mapCypherChar:(unichar)c toPlainChar:(unichar)p
 {
@@ -92,6 +102,8 @@
  tried. This method removes the mapping for the cyphertext character in the
  legend so it will not be mapped in subsequent applications of this legend
  to a cypherword.
+
+ @param c The cypher character
  */
 - (void) unmapCypherChar:(unichar)c
 {
@@ -109,6 +121,9 @@
  This method initializes the legend with the provided map, which is, itself
  a legend for this legend. The point is that this is a way to initialize
  a new legend with a simple map array.
+
+ @param map The array of characters that represents the legend (key)
+ @return self
  */
 - (id) initWithMap:(unichar*)map
 {
@@ -123,6 +138,10 @@
  This method initializes the instance with a single mapping for the legend.
  it's a common way to create a Legend - as we pretty much know we need to
  have at least one character mapped.
+
+ @param c The cypher character
+ @param p The plain character
+ @return self
  */
 - (id) initWithCypherChar:(unichar)c toPlainChar:(unichar)p
 {
@@ -142,6 +161,9 @@
  supplied - IF a mapping exists for this cyphertext character. If not, the
  return value will be '\0', so you need to check on this before you go
  blindly using it.
+
+ @param c The cypher character
+ @return The plain character
  */
 - (unichar) plainCharForCypherChar:(unichar)c
 {
@@ -165,6 +187,9 @@
  supplied - IF a mapping exists for this pairing. If not, the
  return value will be '\0', so you need to check on this before you go
  blindly using it.
+
+ @param p The plain character
+ @return The cypher character
  */
 - (unichar) cypherCharForPlainChar:(unichar)p
 {
@@ -191,6 +216,10 @@
  plaintext characters for the same cypher character. If it's possible,
  we'll incorporate the mappings and return YES, if not, nothing it changed
  and NO is returned.
+
+ @param cyphertet The cyphertext to use as a sequence of mappings
+ @param plaintext The plaintext to use as a sequence of mappings
+ @return YES, if the mappings can be incorporated without conflict
  */
 - (BOOL) incorporateMappingCypher:(CypherWord*)cw toPlain:(NSString*)pw
 {
@@ -246,6 +275,9 @@
  plaintext using the mapping currently available. If it creates a completely
  decoded word/phrase, it returns that word. If not, it returns nil. All
  whitespace and punctuation is simply passed through unchanged.
+
+ @param cyphertext The cyphertext to decode with the legend
+ @return the decoded string, of it's possible
  */
 - (NSString*) decode:(NSString*)cyphertext
 {

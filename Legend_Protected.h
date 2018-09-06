@@ -47,6 +47,8 @@
  new mapping of cyphertext characters to plaintext characters. The logic
  is that the position in the array is the cyphertext character - offset
  from 'a', and the value is the plaintext character for that guy.
+
+ @param map Array of characters that represents the Legend (key)
  */
 - (void) setMap:(unichar*)map;
 

@@ -45,6 +45,8 @@
  This method allows the caller to create an autoreleased PuzzlePiece that
  is based on the provided cyphertext. This is useful in building up the
  puzzle from it's definition.
+
+ @param cypher The cyphertext string that would be one word of the puzzle
  */
 + (PuzzlePiece*) createPuzzlePiece:(NSString*)cypher
 {
@@ -60,6 +62,9 @@
 /*!
  This method returns the CypherWord that is the starting point for this part
  of the puzzle.
+
+ @param
+ @return The CypherWord instance for this PuzzlePiece
  */
 - (CypherWord*) getCypherWord
 {
@@ -71,6 +76,10 @@
  This method returns the array of possible plaintext words that match the
  length and structure of the cypherword. These can then be used as "tests"
  for decoding the cypherword and comparing it to each of these in turn.
+
+ @param
+ @return The array of all the possible plaintext words that pattern match
+         this cyphertext word
  */
 - (NSMutableArray*) getPossibles
 {
@@ -86,6 +95,9 @@
  This initialization method takes a cyphertext and will create a CypherWord
  based on it and then hang onto it so that we're ready to throw in possible
  plaintext words and get around to solving the puzzle.
+
+ @param text The cyphertext string to set on this PuzzlePiece
+ @return self
  */
 - (id) initWithCypherText:(NSString*)text
 {
@@ -257,6 +269,9 @@
  simple way to see how many possible decodings we know about for this one
  cypherword. If there's no array to hold the possibles, this method will return
  -1 indicating an error.
+
+ @param
+ @return The number of possible plaintext matches for this cypher word
  */
 - (int) countOfPossibles
 {
@@ -275,6 +290,9 @@
  good way to see how many, if any, matches there are to the decoding provided
  by the legend. If there's no array to hold the possibles, this method will
  return -1 indicating an error.
+
+ @param key The legend to apply to the cypher word prior to testing
+ @return The number of possible plaintext matches for this cypher word
  */
 - (int) countOfPossiblesUsingLegend:(Legend*)key
 {
@@ -297,6 +315,9 @@
  the CypherWord we have, then we'll add it to the array of possibles. It's a
  simple way to populate the list of possible plaintext words for all the
  pieces in the puzzle.
+
+ @param plain A plaintext word to see if it _might_ match the cypher word
+ @return YES if the word _might_ match
  */
 - (BOOL) checkPlaintextForPossibleMatch:(NSString*)plain
 {

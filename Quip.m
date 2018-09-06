@@ -91,6 +91,10 @@
  This initialization method will set up the quip to use the provided cyphertext
  and the legend created with the provided character mapping. This is the typical
  statement of the quip "problem", and gets this guy off to a great start.
+
+ @param text The source cyphertext to decode
+ @param cypher The cypher character that's part of the hint
+ @param plain The plain character that's part of the hint
  */
 - (id) initWithCypherText:(NSString*)text where:(unichar)cypher equals:(unichar)plain
 {
@@ -104,6 +108,11 @@
  list of "known" plaintext words to use to crack the code is supplied so that
  each of the parts of the puzzle can be populated with potential matches.
  This is the way to get everything set up for a solution method.
+
+ @param text The source cyphertext to decode
+ @param cypher The cypher character that's part of the hint
+ @param plain The plain character that's part of the hint
+ @param dict The Legend to use as the starting point for the solution
  */
 - (id) initWithCypherText:(NSString*)text where:(unichar)cypher equals:(unichar)plain usingDict:(NSArray*)dict
 {
