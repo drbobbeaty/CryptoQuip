@@ -271,7 +271,10 @@
 	// sort the puzzle pieces by the number of possible words they match
 	[[self getPuzzlePieces] sortUsingSelector:@selector(comparePossibles:)];
 	// ...now run through the standard block attack
-	return [self doWordBlockAttackOnIndex:0 withLegend:[self getStartingLegend]];
+	NSTimeInterval begin = [NSDate timeIntervalSinceReferenceDate];
+	BOOL ans = [self doWordBlockAttackOnIndex:0 withLegend:[self getStartingLegend]];
+	NSLog(@"%lu Solution(s) took %f msec", (unsigned long)[[self getSolutions] count], ([NSDate timeIntervalSinceReferenceDate] - begin) * 1000);
+	return ans;
 }
 
 @end

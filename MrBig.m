@@ -155,17 +155,24 @@
 {
 	// get the values from the UI elements
 	NSString*	cyphertext = [[self getCyphertextLine] stringValue];
+	if ((cyphertext == nil) || ([cyphertext length] == 0)) {
+		cyphertext = @"Fict O ncc bivteclnbklzn O lcpji ukl pt vzglcddp";
+	}
 	// ...get the character that's the cypher part of the legend
 	unichar		cypher = '\0';
 	NSString*	cypherCombo = [[self getCypherChar] stringValue];
 	if ((cypherCombo != nil) && ([cypherCombo length] > 0)) {
 		cypher = tolower([cypherCombo characterAtIndex:0]);
+	} else {
+		cypher = 'b';
 	}
 	// ...get the character that's the plain part of the legend
 	unichar		plain = '\0';
 	NSString*	plainCombo = [[self getPlainChar] stringValue];
 	if ((plainCombo != nil) && ([plainCombo length] > 0)) {
 		plain = tolower([plainCombo characterAtIndex:0]);
+	} else {
+		plain = 't';
 	}
 	
 	// now let's call the solver
