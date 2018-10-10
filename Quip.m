@@ -95,6 +95,7 @@
  @param text The source cyphertext to decode
  @param cypher The cypher character that's part of the hint
  @param plain The plain character that's part of the hint
+ @return self, after proper initialization
  */
 - (id) initWithCypherText:(NSString*)text where:(unichar)cypher equals:(unichar)plain
 {
@@ -113,6 +114,7 @@
  @param cypher The cypher character that's part of the hint
  @param plain The plain character that's part of the hint
  @param dict The Legend to use as the starting point for the solution
+ @return self, after proper initialization
  */
 - (id) initWithCypherText:(NSString*)text where:(unichar)cypher equals:(unichar)plain usingDict:(NSArray*)dict
 {
@@ -265,6 +267,9 @@
  
  If this attack results in a successful decoding of the cyphertext, this method
  will return YES, otherwise, it will return NO.
+
+ @param
+ @return YES or NO based on the successful outcome of the attck
  */
 - (BOOL) attemptWordBlockAttack
 {

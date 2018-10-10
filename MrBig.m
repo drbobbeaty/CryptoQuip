@@ -92,7 +92,7 @@
  initial legend for the solution of the puzzle. It's a simple way to get
  the user to tell us what the initial 'key' to the puzzle is.
  */
-- (NSComboBox*) getCypherChar
+- (NSPopUpButton*) getCypherChar
 {
 	return _cypherChar;
 }
@@ -103,7 +103,7 @@
  initial legend for the solution of the puzzle. It's a simple way to get
  the user to tell us what the initial 'key' to the puzzle is.
  */
-- (NSComboBox*) getPlainChar
+- (NSPopUpButton*) getPlainChar
 {
 	return _plainChar;
 }
@@ -155,28 +155,22 @@
 {
 	// get the values from the UI elements
 	NSString*	cyphertext = [[self getCyphertextLine] stringValue];
+	NSString*	cypher = [[self getCypherChar] titleOfSelectedItem];
+	NSString*	plain = [[self getPlainChar] titleOfSelectedItem];
+	
+	// if there is no cyphertext, flip to the test case for testing
 	if ((cyphertext == nil) || ([cyphertext length] == 0)) {
 		cyphertext = @"Fict O ncc bivteclnbklzn O lcpji ukl pt vzglcddp";
+		cypher = @"b";
+		plain = @"t";
+		// ...and feed all these back into the UI so it looks nice
+		[[self getCyphertextLine] setStringValue: cyphertext];
+		[[self getCypherChar] selectItemWithTitle: [cypher uppercaseString]];
+		[[self getPlainChar] selectItemWithTitle: [plain uppercaseString]];
 	}
-	// ...get the character that's the cypher part of the legend
-	unichar		cypher = '\0';
-	NSString*	cypherCombo = [[self getCypherChar] stringValue];
-	if ((cypherCombo != nil) && ([cypherCombo length] > 0)) {
-		cypher = tolower([cypherCombo characterAtIndex:0]);
-	} else {
-		cypher = 'b';
-	}
-	// ...get the character that's the plain part of the legend
-	unichar		plain = '\0';
-	NSString*	plainCombo = [[self getPlainChar] stringValue];
-	if ((plainCombo != nil) && ([plainCombo length] > 0)) {
-		plain = tolower([plainCombo characterAtIndex:0]);
-	} else {
-		plain = 't';
-	}
-	
+
 	// now let's call the solver
-	[self solve:cyphertext where:cypher equals:plain];
+	[self solve:cyphertext where:tolower([cypher characterAtIndex:0]) equals:tolower([plain characterAtIndex:0])];
 }
 
 
@@ -233,8 +227,8 @@
 	// clear out the input and output text areas as we want them clean
 	[[self getPlaintextLine] setStringValue:@""];
 	// ...and de-select the character mappings
-	[[self getCypherChar] deselectItemAtIndex:[[self getCypherChar] indexOfSelectedItem]];
-	[[self getPlainChar] deselectItemAtIndex:[[self getPlainChar] indexOfSelectedItem]];
+	[[self getCypherChar] selectItemWithTitle:@"A"];
+	[[self getPlainChar] selectItemWithTitle:@"A"];
 	
 	// Set the status to a simple 'Ready'
 	[self showStatus:@"Ready"];

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,7 +12,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <menu title="AMainMenu" systemMenu="main" id="29">
             <items>
                 <menuItem title="CryptoQuip" id="56">
@@ -648,7 +649,7 @@
             </items>
             <point key="canvasLocation" x="138" y="39"/>
         </menu>
-        <window title="CryptoQuip" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="371">
+        <window title="CryptoQuip" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="371">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="693" width="517" height="57"/>
@@ -658,7 +659,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <button verticalHuggingPriority="750" imageHugsTitle="YES" id="533">
-                        <rect key="frame" x="432" y="3" width="65" height="25"/>
+                        <rect key="frame" x="432.5" y="3" width="65" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="roundTextured" title="Solve" bezelStyle="texturedRounded" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="534">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -671,18 +672,18 @@
                     <textField verticalHuggingPriority="750" id="535">
                         <rect key="frame" x="6" y="30" width="408" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="Fict O ncc bivteclnbklzn O lcpji ukl pt vzglcddp" drawsBackground="YES" id="536">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Place Cyphertext here" drawsBackground="YES" id="536">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" id="537">
                         <rect key="frame" x="6" y="5" width="408" height="22"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="538">
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="...the decoded answer will be here" drawsBackground="YES" id="538">
                             <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
@@ -695,80 +696,88 @@
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <comboBox verticalHuggingPriority="750" textCompletion="NO" id="559">
-                        <rect key="frame" x="422" y="28" width="38" height="26"/>
+                    <popUpButton verticalHuggingPriority="750" id="r1q-SU-hDU">
+                        <rect key="frame" x="417" y="27" width="46" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="A" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="560">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            <objectValues>
-                                <string>A</string>
-                                <string>B</string>
-                                <string>C</string>
-                                <string>D</string>
-                                <string>E</string>
-                                <string>F</string>
-                                <string>G</string>
-                                <string>H</string>
-                                <string>I</string>
-                                <string>J</string>
-                                <string>K</string>
-                                <string>L</string>
-                                <string>M</string>
-                                <string>N</string>
-                                <string>O</string>
-                                <string>P</string>
-                                <string>Q</string>
-                                <string>R</string>
-                                <string>S</string>
-                                <string>T</string>
-                                <string>U</string>
-                                <string>V</string>
-                                <string>W</string>
-                                <string>X</string>
-                                <string>Y</string>
-                                <string>Z</string>
-                            </objectValues>
-                        </comboBoxCell>
-                    </comboBox>
-                    <comboBox verticalHuggingPriority="750" textCompletion="NO" id="568">
-                        <rect key="frame" x="477" y="28" width="38" height="26"/>
+                        <popUpButtonCell key="cell" type="push" title="A" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="PDF-3z-cVV" id="QeZ-KK-jPG">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="hIq-55-wDJ">
+                                <items>
+                                    <menuItem title="A" state="on" id="PDF-3z-cVV"/>
+                                    <menuItem title="B" id="AcZ-nF-IzD"/>
+                                    <menuItem title="C" id="lDf-My-GOW"/>
+                                    <menuItem title="D" id="d3r-ye-5C5"/>
+                                    <menuItem title="E" id="mfM-tX-HAd"/>
+                                    <menuItem title="F" id="D3E-b4-2Bi"/>
+                                    <menuItem title="G" id="jXE-lB-oU1"/>
+                                    <menuItem title="H" id="9cL-Xl-6Su"/>
+                                    <menuItem title="I" id="b8b-FO-JWP"/>
+                                    <menuItem title="J" id="Uc5-tL-EJW"/>
+                                    <menuItem title="K" id="EIZ-CZ-9OJ">
+                                        <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
+                                    </menuItem>
+                                    <menuItem title="L" id="kQc-2Z-JZY"/>
+                                    <menuItem title="M" id="L19-zt-qrG"/>
+                                    <menuItem title="N" id="EgV-2l-csS"/>
+                                    <menuItem title="O" id="1KM-O5-NRi"/>
+                                    <menuItem title="P" id="c9e-pG-moO"/>
+                                    <menuItem title="Q" id="8zU-Cp-Vvd"/>
+                                    <menuItem title="R" id="mAc-a1-CLV"/>
+                                    <menuItem title="S" id="Jjt-9k-vN5"/>
+                                    <menuItem title="T" id="qxV-BF-OZq"/>
+                                    <menuItem title="U" id="0ID-jE-7h1"/>
+                                    <menuItem title="V" id="PBY-xN-eFI"/>
+                                    <menuItem title="W" id="CwJ-Ky-xRF"/>
+                                    <menuItem title="X" id="wQD-US-A6O"/>
+                                    <menuItem title="Y" id="7sD-WW-wdg">
+                                        <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
+                                    </menuItem>
+                                    <menuItem title="Z" id="Oed-5x-anV"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
+                    <popUpButton verticalHuggingPriority="750" id="hI5-mt-Snq">
+                        <rect key="frame" x="470" y="27" width="46" height="25"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <comboBoxCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="A" drawsBackground="YES" completes="NO" numberOfVisibleItems="5" id="569">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            <objectValues>
-                                <string>A</string>
-                                <string>B</string>
-                                <string>C</string>
-                                <string>D</string>
-                                <string>E</string>
-                                <string>F</string>
-                                <string>G</string>
-                                <string>H</string>
-                                <string>I</string>
-                                <string>J</string>
-                                <string>K</string>
-                                <string>L</string>
-                                <string>M</string>
-                                <string>N</string>
-                                <string>O</string>
-                                <string>P</string>
-                                <string>Q</string>
-                                <string>R</string>
-                                <string>S</string>
-                                <string>T</string>
-                                <string>U</string>
-                                <string>V</string>
-                                <string>W</string>
-                                <string>X</string>
-                                <string>Y</string>
-                                <string>Z</string>
-                            </objectValues>
-                        </comboBoxCell>
-                    </comboBox>
+                        <popUpButtonCell key="cell" type="push" title="A" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="lm9-J4-nQz" id="BSw-9b-D7m">
+                            <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="menu"/>
+                            <menu key="menu" id="kD9-KP-Ye9">
+                                <items>
+                                    <menuItem title="A" state="on" id="lm9-J4-nQz"/>
+                                    <menuItem title="B" id="LEO-ND-5PH"/>
+                                    <menuItem title="C" id="SfI-0m-y8n"/>
+                                    <menuItem title="D" id="aQs-qy-pfH"/>
+                                    <menuItem title="E" id="rz5-KQ-c39"/>
+                                    <menuItem title="F" id="yOo-9o-JcL"/>
+                                    <menuItem title="G" id="0Os-IZ-tXR"/>
+                                    <menuItem title="H" id="oe5-Q9-SdV">
+                                        <modifierMask key="keyEquivalentModifierMask" shift="YES"/>
+                                    </menuItem>
+                                    <menuItem title="I" id="Ma4-fb-a5g"/>
+                                    <menuItem title="J" id="ZMb-Ek-CGU"/>
+                                    <menuItem title="K" id="mgd-u4-X1Z"/>
+                                    <menuItem title="L" id="ddj-bQ-auK"/>
+                                    <menuItem title="M" id="fWy-Cy-1w7"/>
+                                    <menuItem title="N" id="JWF-bn-HYq"/>
+                                    <menuItem title="O" id="VLO-dd-8SD"/>
+                                    <menuItem title="P" id="RMU-wH-STa"/>
+                                    <menuItem title="Q" id="WxI-pT-9Ep"/>
+                                    <menuItem title="R" id="Ud9-dh-rOH"/>
+                                    <menuItem title="S" id="TJd-vg-8bj"/>
+                                    <menuItem title="T" id="TFu-vx-Jqk"/>
+                                    <menuItem title="U" id="cmL-qU-lHz"/>
+                                    <menuItem title="V" id="B9m-vQ-1N5"/>
+                                    <menuItem title="W" id="E9F-87-9c4"/>
+                                    <menuItem title="X" id="eFF-DO-Chy"/>
+                                    <menuItem title="Y" id="3zS-aj-yET"/>
+                                    <menuItem title="Z" id="JaJ-Pb-tQq"/>
+                                </items>
+                            </menu>
+                        </popUpButtonCell>
+                    </popUpButton>
                 </subviews>
             </view>
         </window>
@@ -780,10 +789,10 @@
         <customObject id="420" customClass="NSFontManager"/>
         <customObject id="545" customClass="MrBig">
             <connections>
-                <outlet property="_cypherChar" destination="559" id="565"/>
+                <outlet property="_cypherChar" destination="r1q-SU-hDU" id="9Oo-m1-Btc"/>
                 <outlet property="_cyphertextLine" destination="535" id="563"/>
-                <outlet property="_plainChar" destination="568" id="570"/>
-                <outlet property="_plaintextLine" destination="537" id="564"/>
+                <outlet property="_plainChar" destination="hI5-mt-Snq" id="wZm-Ft-Aod"/>
+                <outlet property="_plaintextLine" destination="537" id="i8X-K6-sQN"/>
             </connections>
         </customObject>
     </objects>

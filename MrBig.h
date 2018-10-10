@@ -39,8 +39,8 @@
 @interface MrBig : NSObject {
 @private
 	IBOutlet NSTextField*	_cyphertextLine;
-	IBOutlet NSComboBox*	_cypherChar;
-	IBOutlet NSComboBox*	_plainChar;
+	IBOutlet NSPopUpButton*	_cypherChar;
+	IBOutlet NSPopUpButton*	_plainChar;
 	IBOutlet NSTextField*	_plaintextLine;
 	IBOutlet NSTextField*	_statusLine;
 	NSMutableArray*			_wordList;
@@ -80,14 +80,14 @@
  initial legend for the solution of the puzzle. It's a simple way to get
  the user to tell us what the initial 'key' to the puzzle is.
  */
-- (NSComboBox*) getCypherChar;
+- (NSPopUpButton*) getCypherChar;
 
 /*!
  This method gets the combo box that will hold the "plaintext" half of the
  initial legend for the solution of the puzzle. It's a simple way to get
  the user to tell us what the initial 'key' to the puzzle is.
  */
-- (NSComboBox*) getPlainChar;
+- (NSPopUpButton*) getPlainChar;
 
 /*!
  This method returns the status line on the window so that I can update the

@@ -148,6 +148,7 @@
 
  @param index The zero-biased index of PuzzlePieces to start the attack on
  @param legend The Legend (key) to start the attack with
+ @return YES if the attack on the puzzle was successful
  */
 - (BOOL) doWordBlockAttackOnIndex:(NSUInteger)index withLegend:(Legend*)legend;
 
