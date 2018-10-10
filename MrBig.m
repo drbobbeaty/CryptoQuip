@@ -164,9 +164,9 @@
 		cypher = @"b";
 		plain = @"t";
 		// ...and feed all these back into the UI so it looks nice
-		[[self getCyphertextLine] setStringValue: cyphertext];
-		[[self getCypherChar] selectItemWithTitle: [cypher uppercaseString]];
-		[[self getPlainChar] selectItemWithTitle: [plain uppercaseString]];
+		[[self getCyphertextLine] setStringValue:cyphertext];
+		[[self getCypherChar] selectItemWithTitle:[cypher uppercaseString]];
+		[[self getPlainChar] selectItemWithTitle:[plain uppercaseString]];
 	}
 
 	// now let's call the solver
