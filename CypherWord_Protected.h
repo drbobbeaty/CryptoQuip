@@ -39,6 +39,27 @@
 @interface CypherWord (Protected)
 
 //----------------------------------------------------------------------------
+//					Pattern Matching Methods
+//----------------------------------------------------------------------------
+
+/*!
+ This method takes an NSString and returns an NSString that is the pattern
+ of that word where the values are the index of the character. This is a
+ simple baseline pattern generator for the words so they are comparable.
+
+ ```
+ => [CypherWord createPatternText:"see"]
+ "abb"
+ => [CypherWord createPatternText:"rabbit"]
+ "abccef"
+ ```.
+
+ @param text Cyphertext string representation to set
+ @return New NSString with a unified pattern of characters
+ */
++ (NSString*) createPatternText:(NSString*)text;
+
+//----------------------------------------------------------------------------
 //					Accessor Methods
 //----------------------------------------------------------------------------
 

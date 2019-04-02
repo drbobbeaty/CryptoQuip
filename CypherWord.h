@@ -40,6 +40,8 @@
 @interface CypherWord : NSObject {
 @private
 	NSString*		_cyphertext;
+	NSUInteger		_cypherSize;
+	NSString*		_cypherPattern;
 }
 
 //----------------------------------------------------------------------------
@@ -77,6 +79,16 @@
  @return Count of characters in the cypherword
  */
 - (NSUInteger) length;
+
+/*!
+ This method returns an NSString that is the pattern of the cyphertext where
+ the pattern is uniform so that 'see', 'bee', and 'all' - all have the same
+ pattern.
+
+ @param
+ @return String uniform pattern of the cyphertext
+ */
+- (NSString*) getCypherPattern;
 
 //----------------------------------------------------------------------------
 //					Initialization Methods

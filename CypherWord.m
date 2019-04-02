@@ -83,7 +83,21 @@
  */
 - (NSUInteger) length
 {
-	return [[self getCypherText] length];
+	return _cypherSize;
+}
+
+
+/*!
+ This method returns an NSString that is the pattern of the cyphertext where
+ the pattern is uniform so that 'see', 'bee', and 'all' - all have the same
+ pattern.
+
+ @param
+ @return String uniform pattern of the cyphertext
+ */
+- (NSString*) getCypherPattern
+{
+	return _cypherPattern;
 }
 
 
@@ -124,44 +138,9 @@
  */
 - (BOOL) matchesPattern:(NSString*)plaintext
 {
-	BOOL	match = YES;
-
-	// make sure that we have something to work with
-	if (match && (([self getCypherText] == nil) || (plaintext == nil))) {
-		match = NO;
-	}
-	
-	// check the lengths - gotta be the same here for sure
-	if (match && ([[self getCypherText] length] != [plaintext length])) {
-		match = NO;
-	}
-
-	/*
-	 * Assume that each pair of characters is a new map, and then test that
-	 * mapping against all other cyphertext/plaintext pairs that SHOULD match
-	 * in the word. If we get a miss on any one of them, then we need to fail.
-	 */
-	if (match) {
-		unichar		cypher, plain, c, p;
-		NSUInteger	len = [plaintext length];
-		for (NSUInteger i = 0; (i < len) && match; ++i) {
-			// get the next possible pair in the two words
-			cypher = [[self getCypherText] characterAtIndex:i];
-			plain = [plaintext characterAtIndex:i];
-			// check all the remaining character pairs
-			for (NSUInteger j = (i+1); (j < len) && match; ++j) {
-				c = [[self getCypherText] characterAtIndex:j];
-				p = [plaintext characterAtIndex:j];
-				if (((cypher == c) && (plain != p)) ||
-					((cypher != c) && (plain == p))){
-					match = NO;
-					break;
-				}
-			}
-		}
-	}
-	
-	return match;
+	return ([self getCypherText] != nil) && (plaintext != nil) &&
+	       ([self length] == [plaintext length]) &&
+	       [[self getCypherPattern] isEqualToString:[CypherWord createPatternText:plaintext]];
 }
 
 
