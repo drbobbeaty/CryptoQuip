@@ -60,11 +60,10 @@
 + (NSString*) createPatternText:(NSString*)text
 {
 	const char *src = [[text lowercaseString] UTF8String];
-	NSUInteger	len = [text length];
-	const char *ascii = "abcdefghijklmnopqrstuvwxyz";
+	NSUInteger	len = MIN([text length], 255);
 	char 		pattern[255];
 	for (NSUInteger i = 0; i < len; ++i) {
-		pattern[i] = ascii[strchr(src, src[i]) - src];
+		pattern[i] = 'a' + (strchr(src, src[i]) - src);
 	}
 	pattern[len] = '\0';
 	return [NSString stringWithUTF8String:pattern];
