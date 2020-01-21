@@ -56,7 +56,7 @@
  */
 + (NSString*) createPatternText:(NSString*)text
 {
-	const char *src = [[text lowercaseString] UTF8String];
+	const char	*src = [[text lowercaseString] UTF8String];
 	NSUInteger	len = MIN([text length], 255);
 	char 		pattern[255];
 	for (NSUInteger i = 0; i < len; ++i) {
